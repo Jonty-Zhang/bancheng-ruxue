@@ -181,7 +181,7 @@ function mdToHtml(t){
 }
 function aiShow(html){ $("ai-out").innerHTML = html; }
 function aiResult(text, model){
-  const tag = model ? `由 ${model} 生成 · 基于官方政策库`
+  const tag = model ? `由 AI 生成 · 基于官方政策库`
                     : `基于官方政策库整理`;
   aiShow(`<span class="tag">${tag}</span>${mdToHtml(text)}`);
 }
