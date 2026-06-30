@@ -1,0 +1,10 @@
+# 含 API key —— 绝对不要上传到 GitHub
+config.txt
+key.txt
+
+# Python
+__pycache__/
+*.pyc
+
+# 系统
+.DS_Store

@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>伴城入学 · 随迁子女入学政策助手</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <span class="brand">伴城入学</span>
+  <a href="#engine">门槛自查</a>
+  <a href="#ask" onclick="goAsk();return false">问 AI</a>
+  <a href="#ladder">八城对比</a>
+  <a href="#plain">政策白话</a>
+  <a href="#sources">数据来源</a>
+</nav>
+
+<header class="hero" id="top">
+  <p class="eyebrow">伴城入学</p>
+  <h1>把孩子带到身边，<br>还差几道门槛？</h1>
+  <p class="sub">选一座城市，填几项家庭情况，看看孩子能不能在这里上学、升学。基于 8 座流入城市的官方政策，实时为你推演。</p>
+  <div class="btns">
+    <button class="pill" onclick="document.getElementById('engine').scrollIntoView()">开始自查 ›</button>
+    <button class="pill-ghost" onclick="goAsk()">问问 AI ›</button>
+  </div>
+  <svg class="hero-art" viewBox="0 0 760 240" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <rect x="60"  y="120" width="70"  height="120" rx="4" fill="#ededf0"/>
+    <rect x="150" y="80"  width="64"  height="160" rx="4" fill="#e6e6ea"/>
+    <rect x="540" y="96"  width="64"  height="144" rx="4" fill="#e6e6ea"/>
+    <rect x="630" y="130" width="70"  height="110" rx="4" fill="#ededf0"/>
+    <rect x="250" y="150" width="120" height="90"  rx="4" fill="#f0f0f3"/>
+    <rect x="392" y="44"  width="120" height="196" rx="12" fill="#ffffff" stroke="#d2d2d7" stroke-width="3"/>
+    <rect x="410" y="62"  width="84"  height="160" rx="6" fill="#0071e3" opacity="0.08"/>
+    <rect x="410" y="62"  width="42"  height="160" rx="6" fill="#0071e3" opacity="0.14"/>
+    <circle cx="442" cy="142" r="4" fill="#0071e3"/>
+    <circle cx="333" cy="196" r="13" fill="#c7c7cc"/>
+    <rect x="324" y="206" width="18" height="34" rx="9" fill="#c7c7cc"/>
+  </svg>
+</header>
+
+<section class="stats-band">
+  <div class="wrap stats">
+    <div class="stat"><div class="num">1.38<span class="u">亿</span></div><div class="lab">受人口流动影响的儿童（占全国儿童 46.4%）</div></div>
+    <div class="stat"><div class="num">1308<span class="u">.83 万</span></div><div class="lab">在城里接受义务教育的随迁子女</div></div>
+    <div class="stat"><div class="num">8<span class="u">座城市</span></div><div class="lab">官方政策结构化入库，实时推演</div></div>
+  </div>
+</section>
+
+<section class="bg-gray" id="engine">
+  <div class="wrap">
+    <h2>你家，卡在哪道门槛？</h2>
+    <p class="sub">像选购一样，一步步选好你的情况，应用按 8 城官方政策实时推演——确定、可查、每条挂来源。</p>
+  </div>
+  <div class="config">
+    <div class="config-options">
+      <div class="opt-group">
+        <div class="opt-label"><span class="step">第 1 步</span>选择城市</div>
+        <div class="tiles" id="city-tiles"></div>
+      </div>
+      <div class="opt-group">
+        <div class="opt-label"><span class="step">第 2 步</span>孩子学段</div>
+        <div class="tiles tiles-stage" id="stage-tiles"></div>
+      </div>
+      <div class="opt-group" id="cond-group">
+        <div class="opt-label"><span class="step">第 3 步</span>你的情况</div>
+        <div class="tiles tiles-cond" id="cond-tiles"></div>
+      </div>
+    </div>
+    <aside class="config-summary">
+      <div class="summary-card" id="result"></div>
+      <div class="ai-block" id="ask">
+        <div class="ask-label">有具体问题？直接问 AI</div>
+        <div class="ai-actions">
+          <button class="ghost" id="btn-guide">下一步该怎么办 ›</button>
+          <button class="ghost" id="btn-script">打电话该问什么 ›</button>
+        </div>
+        <div class="ai-ask">
+          <input id="ai-q" placeholder="还想问什么？例如：社保断缴一个月有没有影响">
+          <button class="pill-sm" id="btn-ask">问 AI</button>
+        </div>
+        <div class="ai-out" id="ai-out"></div>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<section id="ladder">
+  <div class="wrap">
+    <h2>同样进城，<br>普高的门开得不一样宽。</h2>
+    <p class="sub">“孩子能不能在城里读普通高中”，是一道由松到严的门槛阶梯。下列结论均经各市官方原文核实。</p>
+  </div>
+  <div class="ladder" id="ladder-list"></div>
+</section>
+
+<section class="bg-gray" id="plain">
+  <div class="wrap">
+    <h2>看不懂“统筹安排”？<br>让 AI 说人话。</h2>
+    <p class="sub">把政策术语翻成家长能听懂的话——由大模型基于人工核对的政策库生成，每条都能回溯到原文。</p>
+  </div>
+  <div class="cards" id="plain-cards"></div>
+  <p class="ai-note wrap">AI 仅基于已核对的官方政策库作答，不自由发挥；标注来源、可解释、可追溯——对应比赛“AI 使用与合规”。</p>
+</section>
+
+<section id="sources">
+  <div class="wrap">
+    <h2>数据，经得起追问。</h2>
+    <p class="sub">8 城门槛逐条回官方原文核实，三档标注可信度；全国背景数字多源交叉印证。</p>
+    <div class="sources" id="sources-list"></div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="wrap">
+    <p><b>伴城入学</b> · 随迁子女常住地入学政策智能助手 — 第十一届中国数据新闻大赛暨第二届 AIGC 应用大赛参赛作品</p>
+    <hr>
+    <p>政策数据来源：北京、上海、广州、深圳、苏州、成都、东莞、武汉教育局 / 招生考试机构 / 政府门户公开文件。全国背景：国家统计局 / UNICEF / UNFPA、教育部。政策背景：国务院《关于推行常住地提供基本公共服务的实施意见》（2026.05.22）。</p>
+    <p style="margin-top:10px">本工具仅供政策信息参考，最终以各地教育部门当年发布的官方文件为准。AI 生成内容基于人工核对的政策库，不构成官方解释。</p>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
