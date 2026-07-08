@@ -162,7 +162,8 @@ function renderSources(){
 /* ============ 7. AI 助手（任意大模型，经后端 /api/chat；离线兜底） ============ */
 function cityContext(city){
   const d = CITY[city];
-  return `城市：${city}（${d.lvl}）\n居住证：${d.jzz}\n社保/就业：${d.sb}\n住房：${d.zf}\n积分制：${d.jf}\n公办学位安排：${d.gb}\n政策来源：${d.src}`;
+  const v = verdict(city, {});
+  return `城市：${city}（${d.lvl}）\n居住证：${d.jzz}\n社保/就业：${d.sb}\n住房：${d.zf}\n积分制：${d.jf}\n公办学位安排：${d.gb}\n中考能否报普高：${v.h}——${v.d}\n政策来源：${d.src}`;
 }
 async function aiCall(kind, context, question){
   try{
